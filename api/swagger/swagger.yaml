@@ -3,7 +3,7 @@ info:
   version: "0.0.1"
   title: The Electronics Store Api
 # during dev, should point to your local machine
-host: electronicstoreapi.herokuapp.com
+host: localhost:10010
 # basePath prefixes all resource paths 
 basePath: /v1  
 # 
@@ -208,8 +208,6 @@ paths:
               type: string
              stock:
               type: integer
-             price:
-              type: integer
       responses:
         "204":
           description: Sucess
@@ -323,8 +321,8 @@ definitions:
         type: string
       stock:
         type: integer
-
-
-
+      price:
+        type: integer
+ 
 
 
