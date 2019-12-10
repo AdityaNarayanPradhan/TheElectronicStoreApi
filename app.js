@@ -26,9 +26,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (err) { throw err; }
    
   app.use('/docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument));
-  app.use('/',function(req,res){
-   res.text("For Documentation Go To=> http://electronicstoreapi.herokuapp.com/docs");
-  });
+  
   // install middleware
   swaggerExpress.register(app);
 
