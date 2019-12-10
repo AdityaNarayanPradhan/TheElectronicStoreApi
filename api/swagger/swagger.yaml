@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
   version: "0.0.1"
-  title: The Electronics Store App
+  title: The Electronics Store Api
 # during dev, should point to your local machine
-host: https://electronicstoreapi.herokuapp.com/
+host: electronicstoreapi.herokuapp.com
 # basePath prefixes all resource paths 
 basePath: /v1  
 # 
@@ -279,8 +279,6 @@ paths:
            type: string
           stock:
            type: integer
-          price:
-           type: integer
         required: true
         description: Id of the Item .
       description: updates a Item(need to send jwt token from employee/login in the authorization(bearer token))
@@ -317,8 +315,6 @@ definitions:
         type: string
       password:
         type: string
-     
-        
   Item:
      properties:
       id:
@@ -327,8 +323,8 @@ definitions:
         type: string
       stock:
         type: integer
-      price:
-        type: string
- 
+
+
+
 
 
