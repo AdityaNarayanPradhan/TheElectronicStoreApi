@@ -2,8 +2,9 @@ var connection=require('./../../connection');
 let jwt = require('jsonwebtoken');
 var secret=require('./../../config/secret');
 var app=require('express')();
-checktoken = (req,res)=>
+module.exports.findItem =(req,res) =>
 {
+  
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
   if(token)
   if (token.startsWith('Bearer ')) {
@@ -18,22 +19,7 @@ checktoken = (req,res)=>
           message: 'Token is not valid'
         });
       } else {
-        return res.json({
-        success: true,
-        message: 'Auth token is valid'
-    });
-      }
-    });
-  } else {
-    return res.json({
-      success: false,
-      message: 'Auth token is not supplied'
-    });
-  }
-}
-module.exports.findItem =(req,res) =>
-{
-  let id = req.swagger.params.ItemId.value;
+       let id = req.swagger.params.ItemId.value;
   var query = 'SELECT * FROM Item WHERE id='+id+'';
  //   console.log(query)
     connection.query(query, function(err,results) {
@@ -45,6 +31,15 @@ module.exports.findItem =(req,res) =>
             }
             
         });
+      }
+    });
+  } else {
+    return res.json({
+      success: false,
+      message: 'Auth token is not supplied'
+    });
+  }
+   
 }
 module.exports.getItems = (req, res) => {
   let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
@@ -134,7 +129,7 @@ module.exports.postItems = (req, res) => {
     connection.query(query, function(err,results) {
            console.log(results[0].mx);
            id=results[0].mx+1; 
-           var query2 = 'INSERT INTO Item VALUES('+id+',"'+newItem.name+'","'+newItem.stock+'")';
+           var query2 = 'INSERT INTO Item VALUES('+id+',"'+newItem.name+'","'+newItem.stock+'","'+newItem.price+'")';
            console.log(query2);
            connection.query(query2, function(err,results) {
                return res.json({success:true}).status(204).end();  
@@ -169,7 +164,7 @@ module.exports.putItems = (req, res) => {
         });
       } else {
        let id = req.swagger.params.ItemId.value;
-     var query = 'UPDATE Item SET id='+id+',name="'+req.body.name+'",stock="'+req.body.stock+'"WHERE id='+id+'';
+     var query = 'UPDATE Item SET id='+id+',name="'+req.body.name+'",stock="'+req.body.stock+'",price="'+req.body.stock+'"WHERE id='+id+'';
     console.log(query);
     connection.query(query, function(err,results) {
    //         console.log(results);

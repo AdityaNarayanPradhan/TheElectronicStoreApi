@@ -34,6 +34,7 @@ CREATE TABLE `Item` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -44,7 +45,7 @@ CREATE TABLE `Item` (
 
 LOCK TABLES `Item` WRITE;
 /*!40000 ALTER TABLE `Item` DISABLE KEYS */;
-INSERT INTO `Item` VALUES (2,'strtttingkk',7897878);
+INSERT INTO `Item` VALUES (2,'strtttingkk',7897878,NULL),(3,'string',0,NULL),(4,'string',67,89);
 /*!40000 ALTER TABLE `Item` ENABLE KEYS */;
 UNLOCK TABLES;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
@@ -58,4 +59,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-10  1:41:39
+-- Dump completed on 2019-12-10 20:09:00
