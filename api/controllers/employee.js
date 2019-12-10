@@ -43,7 +43,7 @@ module.exports.getemployees = (req, res) => {
     
     var query = 'SELECT * FROM employee';
     connection.query(query, function(err,results) {
-            return res.json(results).status(200);
+            return res.json(results).status(204);
         });
     
 }
